@@ -1,6 +1,6 @@
 public class ECommercePlatform {
     public static void main(String[] args) {
-        // Sample products
+        
         List<Product> products = Arrays.asList(
             new Electronics(1, "Laptop", 1000),
             new Clothing(2, "Jeans", 50),
@@ -9,38 +9,31 @@ public class ECommercePlatform {
             new Electronics(5, "Headphones", 150)
         );
 
-        // Sample customer
         Customer customer = new Customer(101, "john_doe");
-        customer.cart.add(products.get(0)); // Laptop
-        customer.cart.add(products.get(1)); // Jeans
-        customer.cart.add(products.get(4)); // Headphones
+        customer.cart.add(products.get(0)); 
+        customer.cart.add(products.get(1)); 
+        customer.cart.add(products.get(4)); 
 
-        // Create order
         Order order = new Order(customer, customer.cart);
 
-        // Display total
         System.out.println("=== Order Summary ===");
         order.calculateTotal().forEach((k, v) -> System.out.println(k + ": $" + v));
 
-        // Filter Electronics using Stream
         System.out.println("\n=== Filtered Electronics ===");
         products.stream()
                 .filter(p -> p.getCategory().equals("Electronics"))
                 .forEach(System.out::println);
 
-        // Search for "jean"
         System.out.println("\n=== Search 'jean' ===");
         products.stream()
                 .filter(p -> p.name.toLowerCase().contains("jean"))
                 .forEach(System.out::println);
 
-        // Sort by price descending
         System.out.println("\n=== Products Sorted by Price (Descending) ===");
         products.stream()
                 .sorted((a, b) -> Double.compare(b.price, a.price))
                 .forEach(System.out::println);
 
-        // Apply 20% discount using Stream and map
         System.out.println("\n=== Products with 20% Discount Applied ===");
         products.stream()
                 .map(p -> {
