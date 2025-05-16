@@ -2,7 +2,6 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.Collectors;
 
-// === Product Base Class and Subclasses ===
 abstract class Product {
     int id;
     String name;
